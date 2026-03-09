@@ -1,7 +1,7 @@
 import { getApiKey } from './storage';
 
 const API_URL = 'https://api.anthropic.com/v1/messages';
-const MODEL = 'claude-sonnet-4-6-20250514';
+const MODEL = 'claude-sonnet-4-6';
 const MAX_TOKENS = 4096;
 
 const DEFAULT_PROMPT =
