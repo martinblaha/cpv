@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CopyVision</title>
+    <meta name="manifest.type" content="browser_action" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>CopyVision</h1>
+
+      <div id="status" class="status hidden"></div>
+
+      <label for="api-key">Anthropic API Key</label>
+      <input
+        type="password"
+        id="api-key"
+        placeholder="sk-ant-..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+
+      <button id="save-btn" type="button">Save</button>
+
+      <p class="hint">
+        Right-click any image and select<br />
+        <strong>"CopyVision: Transcribe"</strong><br />
+        or press <kbd>Alt+T</kbd> while hovering an image.
+      </p>
+    </div>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
