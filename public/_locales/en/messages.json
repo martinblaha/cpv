@@ -1,0 +1,11 @@
+{
+  "extensionDescription": {
+    "message": "Transcribe text from images via right-click using Claude Vision API"
+  },
+  "contextMenuTranscribe": {
+    "message": "CopyVision: Transcribe"
+  },
+  "commandTranscribe": {
+    "message": "Transcribe image under cursor"
+  }
+}

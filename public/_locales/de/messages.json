@@ -1,0 +1,11 @@
+{
+  "extensionDescription": {
+    "message": "Text aus Bildern per Rechtsklick transkribieren mit Claude Vision API"
+  },
+  "contextMenuTranscribe": {
+    "message": "CopyVision: Transkribieren"
+  },
+  "commandTranscribe": {
+    "message": "Bild unter Cursor transkribieren"
+  }
+}
