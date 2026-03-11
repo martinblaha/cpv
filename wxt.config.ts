@@ -12,7 +12,7 @@ export default defineConfig({
       'storage',
       'notifications',
     ],
-    host_permissions: ['https://api.anthropic.com/*'],
+    host_permissions: ['https://api.anthropic.com/*', '<all_urls>'],
     commands: {
       transcribe: {
         suggested_key: {
@@ -35,7 +35,7 @@ export default defineConfig({
           browsingActivity: false,
           technicalAndInteraction: false,
         },
-      },
+      } as Record<string, unknown>,
     },
   },
 });
