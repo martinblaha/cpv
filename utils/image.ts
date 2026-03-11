@@ -16,12 +16,7 @@ export async function fetchImageAsBase64(url: string): Promise<ImageData> {
     return parseDataUrl(url);
   }
 
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch image: ${response.status}`);
-  }
-
-  const blob = await response.blob();
+  const blob = await xhrFetchBlob(url);
   const mediaType = blob.type || guessMediaType(url);
 
   if (blob.size > MAX_SIZE_BYTES) {
@@ -30,6 +25,28 @@ export async function fetchImageAsBase64(url: string): Promise<ImageData> {
 
   const base64 = await blobToBase64(blob);
   return { base64, mediaType };
+}
+
+/**
+ * Fetch a URL as a Blob using XMLHttpRequest.
+ * In Firefox MV2, XHR from the background page respects extension
+ * host permissions and bypasses CORS restrictions.
+ */
+function xhrFetchBlob(url: string): Promise<Blob> {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'blob';
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(xhr.response as Blob);
+      } else {
+        reject(new Error(`Failed to fetch image: ${xhr.status}`));
+      }
+    };
+    xhr.onerror = () => reject(new Error('Network error fetching image'));
+    xhr.send();
+  });
 }
 
 function parseDataUrl(dataUrl: string): ImageData {

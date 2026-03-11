@@ -67,5 +67,6 @@ export default defineContentScript({
 
       return null;
     }
+
   },
 });
