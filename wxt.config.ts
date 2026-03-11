@@ -35,7 +35,7 @@ export default defineConfig({
           browsingActivity: false,
           technicalAndInteraction: false,
         },
-      },
+      } as Record<string, unknown>,
     },
   },
 });
